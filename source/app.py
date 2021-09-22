@@ -1,5 +1,5 @@
 from PIL import Image
-from random import randint
+import random
 
 height, width = 600, 600
 rot = [0, 90, 180, 270]
@@ -7,17 +7,31 @@ rot = [0, 90, 180, 270]
 
 def mergeImg(arr):
     merge_img = Image.new("RGB", (height, width))
-    merge_img.paste(arr[0], (0, 0))
-    merge_img.paste(arr[2], (arr[2].width, 0))
-    merge_img.paste(arr[1], (0, arr[1].width))
-    merge_img.paste(arr[3], (arr[3].width, arr[3].width))
+    choice_number = [0, 1, 2, 3]
+
+    number = random.choice(choice_number)
+    choice_number.remove(number)
+    merge_img.paste(arr[number], (0, 0))
+
+    number = random.choice(choice_number)
+    choice_number.remove(number)
+    merge_img.paste(arr[number], (arr[number].width, 0))
+
+    number = random.choice(choice_number)
+    choice_number.remove(number)
+    merge_img.paste(arr[number], (0, arr[number].width))
+
+    number = random.choice(choice_number)
+    choice_number.remove(number)
+    merge_img.paste(arr[number], (arr[number].width, arr[number].width))
+
     merge_img.show()
 
 
 def rotateImg(imgs):
     result = []
     for i in imgs:
-        result.append(i.rotate(rot[randint(0, 3)]))
+        result.append(i.rotate(rot[random.randint(0, 3)]))
     mergeImg(result)
 
 
