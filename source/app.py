@@ -35,7 +35,7 @@ def rotateImg(imgs):
     return result
 
 
-def cropImg(img, count):
+def cropImg(img):
     images = []
     height, width = img.size
     # 1

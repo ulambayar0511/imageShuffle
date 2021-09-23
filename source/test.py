@@ -1,7 +1,6 @@
 import random
+import os
 
-foo = ["a", "b"]
-foo[0] = "t"
-
-
-print(foo)
+arr = os.listdir("../images")
+for i in arr:
+    print(i)
