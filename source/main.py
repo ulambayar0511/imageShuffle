@@ -14,7 +14,11 @@ if __name__ == "__main__":
             for i in range(len(imgs)):
                 images = app.cropImg(imgs[i])
                 images = app.rotateImg(images)
-                imgs[i] = app.mergeImg(images, imgs[i].size)
 
+                for k in range(len(images)):
+                    ims = app.cropImg(images[k])
+                    ims = app.rotateImg(ims)
+                    images[k] = app.mergeImg(ims, images[k].size)
+                imgs[i] = app.mergeImg(images, imgs[i].size)
             img = app.mergeImg(imgs, img.size)
             img.save("../shuffleImg/{}".format(j))
