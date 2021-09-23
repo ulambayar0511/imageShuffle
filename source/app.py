@@ -1,12 +1,13 @@
 from PIL import Image
 import random
 
-height, width = 600, 600
+
 rot = [0, 90, 180, 270]
 
 
-def mergeImg(arr):
-    merge_img = Image.new("RGB", (height, width))
+def mergeImg(arr, size):
+
+    merge_img = Image.new("RGB", size)
     choice_number = [0, 1, 2, 3]
 
     number = random.choice(choice_number)
@@ -26,18 +27,19 @@ def mergeImg(arr):
     merge_img.paste(arr[number], (arr[number].width, arr[number].width))
 
     merge_img.show()
+    return merge_img
 
 
 def rotateImg(imgs):
     result = []
     for i in imgs:
         result.append(i.rotate(rot[random.randint(0, 3)]))
-    mergeImg(result)
+    return result
 
 
 def cropImg(img, count):
-    img = img.resize((height, width))
     images = []
+    height, width = img.size
     # 1
     left = 0
     top = 0
@@ -71,14 +73,4 @@ def cropImg(img, count):
     images.append(img2)
     images.append(img3)
     images.append(img4)
-    rotateImg(images)
-
-    # for i in range(count):
-
-    # img_crop.show()
-
-
-with Image.open("images/test.jpg") as img:
-
-    # img.show()
-    cropImg(img, 4)
+    return images
