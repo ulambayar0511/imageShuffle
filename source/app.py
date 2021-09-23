@@ -25,8 +25,6 @@ def mergeImg(arr, size):
     number = random.choice(choice_number)
     choice_number.remove(number)
     merge_img.paste(arr[number], (arr[number].width, arr[number].width))
-
-    merge_img.show()
     return merge_img
 
 
@@ -46,7 +44,6 @@ def cropImg(img, count):
     right = width / 2
     bottom = height / 2
     img1 = img.crop((left, top, right, bottom))
-    img1.save("1.jpg")
     # 2
     left = width / 2
     top = 0
@@ -54,21 +51,18 @@ def cropImg(img, count):
     bottom = height / 2
     img2 = img.crop((left, top, right, bottom))
 
-    img2.save("2.jpg")
     # 3
     left = 0
     top = height / 2
     right = width / 2
     bottom = height
     img3 = img.crop((left, top, right, bottom))
-    img3.save("3.jpg")
     # 4
     left = width / 2
     top = height / 2
     right = width
     bottom = height
     img4 = img.crop((left, top, right, bottom))
-    img4.save("4.jpg")
     images.append(img1)
     images.append(img2)
     images.append(img3)

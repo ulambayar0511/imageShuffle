@@ -7,12 +7,13 @@ if __name__ == "__main__":
         img = img.resize((height, width))
         imgs = app.cropImg(img, 4)
         imgs = app.rotateImg(imgs)
-        img = app.mergeImg(imgs, img.size)
 
         counter = 1
-        for i in imgs:
-            images = app.cropImg(i, 4)
+        for i in range(len(imgs)):
+            images = app.cropImg(imgs[i], 4)
             images = app.rotateImg(images)
-            i = app.mergeImg(images, i.size)
-            i.save("images/{}.jpg".format(counter))
+            imgs[i] = app.mergeImg(images, imgs[i].size)
+            imgs[i].save("images/{}.jpg".format(counter))
             counter += 1
+        img = app.mergeImg(imgs, img.size)
+        img.save("images/16.jpg")
